@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# This script writes the first line of file $1 to file $2 and prints it to stdout.
+# Also adds a 'This was copied from $1' message to the second line.
+
+if [[ -z $1 || -z $2 ]]; then
+   echo "Usage: print-first-line-to \$1 \$2"
+else
+    grep -m 1 "" "$1" | sed "aThis was copied from $1" > "$2"
+    cat "$2"
+fi
